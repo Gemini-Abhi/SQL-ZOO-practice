@@ -16,3 +16,8 @@ select name from world
 where gdp > (
               select max(gdp) from world where continent = 'Europe'
                )
+8.List each continent and the name of the country that comes first alphabetically.
+ANS: Select  x.continent, x.name
+From world x
+Where x.name <= ALL (select y.name from world y where x.continent=y.continent)
+ORDER BY name
