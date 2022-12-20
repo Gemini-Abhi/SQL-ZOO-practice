@@ -1,0 +1,21 @@
+1.List the films where the yr is 1962 [Show id, title]
+SELECT id, title
+ FROM movie
+ WHERE yr=1962
+ 
+ 2.Give year of 'Citizen Kane'.
+    select yr from movie where title like 'Citizen kane'
+
+ 3.List all of the Star Trek movies, include the id, title and yr (all of these movies include the words Star Trek in the title). Order results by year.
+
+    select id,title,yr from movie where title like '%Star trek%'
+ 4.What id number does the actor 'Glenn Close' have?
+     select id from actor where name like 'Glenn close'
+ 5.What is the id of the film 'Casablanca'
+      select id from movie where title like 'Casablanca'
+ 6.Obtain the cast list for 'Casablanca'. 
+      select actor.name   from casting join actor on(id=actorid) where movieid like 27
+ 7.Obtain the cast list for the film 'Alien'
+     select name 
+     from actor join casting on (actorid=id) 
+     where movieid=(select movieid from casting join movie on (id=movieid) where title like 'Alien' group by movieid) 
