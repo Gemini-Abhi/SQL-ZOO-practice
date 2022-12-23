@@ -29,3 +29,11 @@ SELECT id, title
        (select movieid 
         from casting join movie on (id=movieid)
          where actorid = 6)
+   9.List the films where 'Harrison Ford' has appeared - but not in the starring role. 
+   [Note: the ord field of casting gives the position of the actor. If ord=1 then this actor is in the starring role]
+   
+     select title from movie where id in
+        (select movieid 
+           from casting join movie on (id=movieid)
+                      where actorid = 6 and ord <> 1)
+    
