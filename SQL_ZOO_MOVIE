@@ -18,7 +18,14 @@ SELECT id, title
       select id from movie where title like 'Casablanca'
  6.Obtain the cast list for 'Casablanca'. 
       select actor.name   from casting join actor on(id=actorid) where movieid like 27
+      
  7.Obtain the cast list for the film 'Alien'
      select name 
      from actor join casting on (actorid=id) 
-     where movieid=(select movieid from casting join movie on (id=movieid) where title like 'Alien' group by movieid) 
+     where movieid=(select movieid from casting join movie on (id=movieid) where title like 'Alien' group by movieid)
+     
+  8.List movies where 'Harrison Ford' has appeared
+     select title from movie where id in
+       (select movieid 
+        from casting join movie on (id=movieid)
+         where actorid = 6)
