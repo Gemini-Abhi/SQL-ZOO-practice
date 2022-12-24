@@ -36,4 +36,9 @@ SELECT id, title
         (select movieid 
            from casting join movie on (id=movieid)
                       where actorid = 6 and ord <> 1)
-    
+                  
+    10.list the films together with the leading star for all 1962 movies.
+         select title,actor.name from  movie join casting 
+           on (id=movieid)
+           join actor on (casting.actorid=actor.id)
+           where movie.id in (select id from movie where yr like 1962) and ord = 1
