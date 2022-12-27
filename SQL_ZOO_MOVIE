@@ -42,3 +42,12 @@ SELECT id, title
            on (id=movieid)
            join actor on (casting.actorid=actor.id)
            where movie.id in (select id from movie where yr like 1962) and ord = 1
+    
+    12.List the film title and the leading actor for all of the films 'Julie Andrews' played in.
+     
+         SELECT title,name
+          FROM ACTOR JOIN CASTING ON (ID =ACTORID and ord =1)
+          JOIN MOVIE ON (MOVIE.ID=MOVIEID)
+             where movie.id in (select movieid from casting
+             where actorid in (select id from actor 
+             where name ='Julie Andrews'))
