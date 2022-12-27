@@ -57,3 +57,7 @@ SELECT id, title
           FROM actor
           JOIN casting ON (id = actorid AND (SELECT COUNT(ord) FROM casting WHERE actorid = actor.id AND ord=1)>=15)
           GROUP BY name
+      14. List the films released in the year 1978 ordered by the number of actors in the cast, then by title.
+      
+           select title,count(actorid) cast from casting join movie on (id=movieid ) where yr = 1978
+           group by title order by cast desc, title
